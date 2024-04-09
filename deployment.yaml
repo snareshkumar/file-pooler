@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: file-pooler
+spec:
+  selector:
+    matchLabels:
+      app: file-pooler
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: file-pooler
+    spec:
+      containers:
+        - name: file-pooler
+          image: file-pooler:1.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080

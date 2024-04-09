@@ -1,0 +1,17 @@
+spring:
+  config.activate.on-profile: local
+  kafka:
+    producer:
+      bootstrap-server: localhost:9092
+      retries: 20
+file-pooler:
+  directories:
+    - /home/nareshkumars/MySpace/temp/source1
+    - /home/nareshkumars/MySpace/temp/source2
+  destinationdirectories:
+    - expression: "#root[file_name].contains('.txt')"
+      resultvalue: '/home/nareshkumars/MySpace/temp/destination1/'
+      topic: testtopic
+    - expression: "#root[file_name].contains('.html')"
+      resultvalue: '/home/nareshkumars/MySpace/temp/destination2/'
+      topic: testtopic
